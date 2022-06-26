@@ -1,7 +1,7 @@
 name: dio_cache_interceptor_sembast_store
-description: A starting point for Dart libraries or applications.
+description: A DB cache store implementation with Sembast for dio_cache_interceptor package.
 version: 1.0.0
-# homepage: https://www.example.com
+homepage: https://github.com/xavier-lyu/dio_cache_interceptor_sembast_store
 
 environment:
   sdk: ">=2.17.5 <3.0.0"
