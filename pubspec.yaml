@@ -4,10 +4,12 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.17.5 <3.0.0'
+  sdk: ">=2.17.5 <3.0.0"
 
-# dependencies:
-#   path: ^1.8.0
+dependencies:
+  dio: ^4.0.6
+  dio_cache_interceptor: ^3.2.7
+  sembast: ^3.2.0+1
 
 dev_dependencies:
   lints: ^2.0.0
