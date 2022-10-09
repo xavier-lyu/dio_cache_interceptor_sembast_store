@@ -1,6 +1,6 @@
 name: dio_cache_interceptor_sembast_store
 description: A DB cache store implementation with Sembast for dio_cache_interceptor package.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/xavier-lyu/dio_cache_interceptor_sembast_store
 
 environment:
@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   dio: ^4.0.6
-  dio_cache_interceptor: ^3.2.7
-  sembast: ^3.2.0+1
+  dio_cache_interceptor: ^3.3.0
+  sembast: ^3.3.0
 
 dev_dependencies:
   lints: ^2.0.0

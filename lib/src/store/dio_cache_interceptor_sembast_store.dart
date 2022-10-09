@@ -3,7 +3,7 @@ import 'package:sembast/sembast.dart';
 
 /// A store saving response using sembast.
 ///
-class SembastCacheStore implements CacheStore {
+class SembastCacheStore extends CacheStore {
   // Sembast database instance
   final Database database;
   // Cache store name
@@ -78,6 +78,35 @@ class SembastCacheStore implements CacheStore {
   Future<void> set(CacheResponse response) async {
     final store = _openStore();
     await store.record(response.key).put(database, response.toMap());
+  }
+
+  @override
+  Future<void> deleteFromPath(RegExp pathPattern,
+      {Map<String, String?>? queryParams}) async {
+    final responses = await getFromPath(pathPattern, queryParams: queryParams);
+
+    final store = _openStore();
+
+    for (var resp in responses) {
+      await store.record(resp.key).delete(database);
+    }
+  }
+
+  @override
+  Future<List<CacheResponse>> getFromPath(RegExp pathPattern,
+      {Map<String, String?>? queryParams}) async {
+    final responses = <CacheResponse>[];
+    final store = _openStore();
+    final records = await store.find(database);
+
+    for (var record in records) {
+      final resp = cacheResponseFromMap(record.value);
+      if (pathExists(resp.url, pathPattern, queryParams: queryParams)) {
+        responses.add(resp);
+      }
+    }
+
+    return responses;
   }
 }
 
